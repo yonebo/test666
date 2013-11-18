@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 
 @interface MainViewController : UIViewController
 {
@@ -18,6 +19,8 @@
     IBOutlet UIButton *buttonSearch;
     IBOutlet UIButton *buttonRegistry;
     IBOutlet UIButton *buttonDelete;
+    
+    //IBOutlet UITableView *tvResult;
 }
 
 @property(nonatomic, retain) IBOutlet UITextField *tfKey;
@@ -26,8 +29,13 @@
 @property(nonatomic, retain) IBOutlet UITextField *tfBData;
 
 @property(nonatomic, retain) IBOutlet UIButton *buttonSearch;
+- (IBAction)SelectData:(id)sender;
+
 @property(nonatomic, retain) IBOutlet UIButton *buttonRegistry;
+- (IBAction)InsertData:(id)sender;
+
 @property(nonatomic, retain) IBOutlet UIButton *buttonDelete;
+- (IBAction)DeleteData:(id)sender;
 
 - (IBAction)closeSoftwareKeyboard:(id)sender;
 

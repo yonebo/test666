@@ -10,15 +10,15 @@
 
 @interface EntTableA : NSObject
 {
-    NSInteger *key;
+    NSInteger key;
     NSString *textData;
-    NSInteger *intData;
+    NSInteger intData;
     BOOL *boolData;
 }
 
-@property(nonatomic, assign)NSInteger *key;
+@property(nonatomic, assign)NSInteger key;
 @property(nonatomic, retain)NSString *textData;
-@property(nonatomic, assign)NSInteger * intData;
+@property(nonatomic, assign)NSInteger  intData;
 @property BOOL *boolData;
 
 - (id)init;

@@ -21,7 +21,7 @@
 - (id)init
 {
     if (self){
-        self.key = 666;
+        self.key = 2;
         self.textData = @"";
         self.intData = -1;
         self.boolData = NO;
