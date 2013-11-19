@@ -131,7 +131,15 @@
 
 /// 削除ボタン押下処理
 - (IBAction)DeleteData:(id)sender {
-    
+
+    // 削除条件
+    // --空だったら処理を抜ける
+    NSInteger deleteKey = [tfKey.text integerValue];
+    if (deleteKey < 1){
+        NSLog(@"[key]を入力してください。");
+        return;
+    }
+
     /// DBを使う準備
     // - DBファイルのパス
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -160,10 +168,23 @@
     
     // "db" を再利用するステートメントに設定
     [db setShouldCacheStatements:YES];
-
     
-    //　TODO 処理を記述
-    
+    //　削除処理
+    NSString *sqlDELETE = @"DELETE FROM tableA WHERE key = ?";
+    if (![db executeUpdate:sqlDELETE, [NSNumber numberWithInteger:deleteKey]]){
+        
+        // エラー時は、警告メッセージを表示
+        NSString *alertMessage = [NSString stringWithFormat:@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]];
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"失敗しました" message:alertMessage delegate:self cancelButtonTitle:@"O K !" otherButtonTitles:nil];
+        [alert show];
+        
+    } else {
+        NSString *alertMessage = [NSString stringWithFormat:@"[%ld]を削除しました", deleteKey];
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"削除しました" message:alertMessage delegate:self cancelButtonTitle:@"ＯＫ！" otherButtonTitles:nil];
+        [alert show];
+    }
     
     // - DB閉じます
     if (![db close]) {
