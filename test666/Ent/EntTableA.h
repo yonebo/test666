@@ -13,13 +13,13 @@
     NSInteger key;
     NSString *textData;
     NSInteger intData;
-    BOOL *boolData;
+    BOOL boolData;
 }
 
 @property(nonatomic, assign)NSInteger key;
 @property(nonatomic, retain)NSString *textData;
 @property(nonatomic, assign)NSInteger  intData;
-@property BOOL *boolData;
+@property BOOL boolData;
 
 - (id)init;
 - (void)showData;
